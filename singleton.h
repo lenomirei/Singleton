@@ -60,7 +60,7 @@ private:
 
   void static OnDestroyed() {
     destroyed_.store(true, std::memory_order_relaxed);
-    Traits::Delete(reinterpret_cast<Type*>(instance_.load(), std::memory_order_relaxed));
+    Traits::Delete(reinterpret_cast<Type*>(instance_.load(std::memory_order_relaxed)));
     instance_.store(0, std::memory_order_relaxed);
   }
   
